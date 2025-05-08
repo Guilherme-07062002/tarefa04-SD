@@ -24,3 +24,6 @@ const char *opcoes[] = {"0 - GR", "1 - HO", "2 - DI", "3 - PT"};
 
 // Total de opções disponíveis no menu
 const unsigned int total_opcoes = 4;
+
+// Indica se a catraca está aberta ou fechada
+bool catraca_aberta = false;

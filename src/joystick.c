@@ -1,5 +1,4 @@
 #include "joystick.h"
-#include "hardware/adc.h" // Inclui o cabeçalho para funções ADC
 #include "globals.h"
 
 /**
@@ -8,6 +7,10 @@
 void init_joystick() {
     adc_init();
     adc_gpio_init(VRY); // Configura o pino do eixo Y para ADC
+    // Configura o pino do botão do joystick
+    gpio_init(SW);
+    gpio_set_dir(SW, GPIO_IN);
+    gpio_pull_up(SW);
 }
 
 /**

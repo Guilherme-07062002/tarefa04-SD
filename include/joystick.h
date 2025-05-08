@@ -4,10 +4,13 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "pico/stdlib.h"
+#include "hardware/adc.h"
 
 // Definições de pinos e ADC para o joystick
 #define VRY 27 // Pino do eixo Y do joystick
 #define ADC_CHANNEL_1 1 // Canal ADC para o eixo Y
+// Define SW as 22 for the joystick button pin
+#define SW 22
 
 /**
  * Inicializa o joystick (configuração do ADC).

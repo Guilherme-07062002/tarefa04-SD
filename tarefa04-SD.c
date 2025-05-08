@@ -35,6 +35,13 @@ void comportamento_principal(uint *countup, uint *countdown, uint *histerese) {
 
     // De acordo com a opção selecionada, realiza a ação correspondente
     execute_logic_operation(); // Executa a operação lógica correspondente
+
+    // Atualiza o estado dos LEDs com base na opção selecionada
+    if (catraca_aberta) {
+        green_led_on(); // Liga o LED verde se a catraca estiver aberta
+    } else {
+        red_led_on(); // Liga o LED vermelho se a catraca estiver fechada
+    }
 }
 
 // Função principal

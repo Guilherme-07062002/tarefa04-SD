@@ -30,4 +30,9 @@ extern const char *opcoes[];
  */
 extern const unsigned int total_opcoes;
 
+/**
+ * Indica se a catraca está aberta ou fechada.
+ */
+extern bool catraca_aberta;
+
 #endif // GLOBALS_H

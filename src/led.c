@@ -27,9 +27,27 @@ void red_led_on() {
 }
 
 /**
+ * Verifica se o LED vermelho está ligado.
+ * 
+ * @return true se o LED vermelho estiver ligado, false caso contrário.
+ */
+bool red_led_is_on() {
+    return gpio_get(RED_LED_PIN) == 1;
+}
+
+/**
  * Liga o LED verde e desliga o LED vermelho.
  */
 void green_led_on() {
     gpio_put(RED_LED_PIN, 0);
     gpio_put(GREEN_LED_PIN, 1);
+}
+
+/**
+ * Verifica se o LED verde está ligado.
+ * 
+ * @return true se o LED verde estiver ligado, false caso contrário.
+ */
+bool green_led_is_on() {
+    return gpio_get(GREEN_LED_PIN) == 1;
 }
