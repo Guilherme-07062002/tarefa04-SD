@@ -1,9 +1,7 @@
 #include "joystick.h"
 #include "globals.h"
+#include <stdio.h> // Include for printf
 
-/**
- * Inicializa o joystick configurando o ADC.
- */
 void init_joystick() {
     adc_init();
     adc_gpio_init(VRY); // Configura o pino do eixo Y para ADC
@@ -13,16 +11,6 @@ void init_joystick() {
     gpio_pull_up(SW);
 }
 
-/**
- * Lê o valor do eixo Y do joystick e atualiza a opção selecionada.
- * 
- * @param vry_value Ponteiro para armazenar o valor lido do eixo Y.
- * @param countup   Ponteiro para o contador de movimento para cima.
- * @param countdown Ponteiro para o contador de movimento para baixo.
- * @param histerese Ponteiro para o contador de histerese para suavizar mudanças rápidas.
- * 
- * @return true se a opção foi alterada, false caso contrário.
- */
 bool joystick_read_axis(uint16_t *vry_value, uint *countup, uint *countdown, uint *histerese) {
     adc_select_input(ADC_CHANNEL_1); // Seleciona o canal ADC para o eixo Y
     sleep_us(2); // Pequeno atraso para estabilizar a leitura
@@ -61,4 +49,9 @@ bool joystick_read_axis(uint16_t *vry_value, uint *countup, uint *countdown, uin
     }
 
     return false; // Nenhuma alteração foi feita
+}
+
+void joystick_button_pressed() {
+    joystick_button_was_pressed = !gpio_get(SW); // Inverte o estado do botão
+    printf("Botão do joystick pressionado: %d\n", joystick_button_was_pressed); // Debug: imprime o estado do botão
 }

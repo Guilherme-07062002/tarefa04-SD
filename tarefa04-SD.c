@@ -4,7 +4,8 @@
 #include "display.h"
 #include "joystick.h"
 #include "led.h"
-#include "logic.h" // Incluído para usar as funções de lógica
+#include "logic.h"
+#include "matriz.h"
 
 // Função para inicializar periféricos
 void inicializa() {
@@ -18,6 +19,9 @@ void inicializa() {
 
     // Inicializa LEDs
     init_leds();
+
+    // Inicializa a matriz de LEDs
+    neopixel_init(LED_PIN, LED_COUNT);
 }
 
 /**
@@ -31,10 +35,10 @@ void comportamento_principal(uint *countup, uint *countdown, uint *histerese) {
     // Exibe a opção atual no display apenas se ela foi alterada
     if (opcao_alterada) {
         print_texto((char *)opcoes[opcao_atual], 18, 3); // Centralizado no display
-    }
 
-    // De acordo com a opção selecionada, realiza a ação correspondente
-    execute_logic_operation(); // Executa a operação lógica correspondente
+        // De acordo com a opção selecionada, realiza a ação correspondente
+        execute_logic_operation(); // Executa a operação lógica correspondente
+    }
 
     // Atualiza o estado dos LEDs com base na opção selecionada
     if (catraca_aberta) {
@@ -53,6 +57,11 @@ int main() {
     uint histerese = 5; // Controle de histerese para suavizar mudanças rápidas
 
     while (1) {
+        // Caso o botão do joystick tenha sido pressionado, altera o estado do botão
+        if(!joystick_button_was_pressed){
+            joystick_button_pressed();
+        }
+
         comportamento_principal(&countup, &countdown, &histerese);
         sleep_ms(100);
     }

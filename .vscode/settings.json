@@ -46,6 +46,7 @@
         "stdlib.h": "c",
         "pwm.h": "c",
         "led.h": "c",
-        "logic.h": "c"
+        "logic.h": "c",
+        "joystick.h": "c"
     }
 }

@@ -10,7 +10,7 @@ static uint np_sm;
 /**
  * Inicializa a máquina PIO para controle da matriz de LEDs.
  */
-void npInit(uint pin, uint amount) {
+void neopixel_init(uint pin, uint amount) {
 
   led_count = amount;
   leds = (npLED_t *)calloc(led_count, sizeof(npLED_t));
@@ -35,12 +35,14 @@ void npInit(uint pin, uint amount) {
     leds[i].G = 0;
     leds[i].B = 0;
   }
+  
+  set_initial_state(); // Inicializa o estado inicial da matriz de LEDs.
 }
 
 /**
  * Atribui uma cor RGB a um LED.
  */
-void npSetLED(const uint index, const uint8_t r, const uint8_t g, const uint8_t b) {
+void neopixel_set_led(const uint index, const uint8_t r, const uint8_t g, const uint8_t b) {
   if (index < led_count) { // Verifica se o índice é válido
     leds[index].R = r;
     leds[index].G = g;
@@ -51,15 +53,15 @@ void npSetLED(const uint index, const uint8_t r, const uint8_t g, const uint8_t 
 /**
  * Limpa o buffer de pixels.
  */
-void npClear() {
+void neopixel_clear() {
   for (uint i = 0; i < led_count; ++i)
-    npSetLED(i, 0, 0, 0);
+    neopixel_set_led(i, 0, 0, 0);
 }
 
 /**
  * Escreve os dados do buffer nos LEDs.
  */
-void npWrite() {
+void neopixel_write() {
   // Escreve cada dado de 8-bits dos pixels em sequência no buffer da máquina PIO.
   for (uint i = 0; i < led_count; ++i) {
     pio_sm_put_blocking(np_pio, np_sm, leds[i].G);
