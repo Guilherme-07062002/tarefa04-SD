@@ -8,10 +8,10 @@
 #include "matriz.h"
 
 /**
- * Definição de pixel GRB
+ * Definição de pixel GRB (ordem: Verde, Vermelho, Azul)
  * */
 typedef struct {
-  uint8_t G, R, B; // Três valores de 8-bits compõem um pixel.
+  uint8_t G, R, B; // Três valores de 8-bits compõem um pixel na ordem GRB.
 } npLED_t;
 
 /**

@@ -10,7 +10,7 @@
 #define PINO_SDA 15
 
 /**
- * Inicializa o display OLED.
+ * Inicializa o display OLED configurando o I2C e limpando o display.
  */
 void init_display();
 
@@ -20,10 +20,9 @@ void init_display();
 void clear_display();
 
 /**
- * Exibe texto no display OLED.
+ * Exibe texto centralizado no display OLED.
  * 
  * @param msg   Mensagem a ser exibida.
- * @param pos_x Posição X no display.
  * @param pos_y Posição Y no display.
  * @param scale Escala do texto.
  */

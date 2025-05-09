@@ -7,8 +7,6 @@
 #define LED_PIN 7 // Pino de dados da matriz de LEDs
 #define LED_COUNT 25 // Número de LEDs na matriz
 
-// Funções para definir o respectivo led da matriz como vermelho ou verde de acordo com o valor do parâmetro.
-
 /**
  * Define a cor do LED correspondente ao GR (Giro Reconhecido).
  * @param value Valor booleano que indica se o LED deve ser verde (true) ou vermelho (false).

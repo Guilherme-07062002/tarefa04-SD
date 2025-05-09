@@ -3,22 +3,42 @@
 
 #include <stdbool.h>
 
-// Definições de pinos e módulos
+// Pino do LED azul
 #define BLUE_LED_PIN 12
+
+// Pino do LED vermelho
 #define RED_LED_PIN 13
+
+// Pino do LED verde
 #define GREEN_LED_PIN 11
 
-// Função de inicialização do LED
+/**
+ * Inicializa os LEDs configurando os pinos como saída.
+ */
 void init_leds();
 
-// Funções para controlar o LED vermelho
-void red_led_on();;
+/**
+ * Liga o LED vermelho e desliga o LED verde.
+ */
+void red_led_on();
 
-extern bool red_led_is_on(); // Verifica se o LED vermelho está ligado
+/**
+ * Verifica se o LED vermelho está ligado.
+ * 
+ * @return true se o LED vermelho estiver ligado, false caso contrário.
+ */
+extern bool red_led_is_on();
 
-// Funções para controlar o LED verde
+/**
+ * Liga o LED verde e desliga o LED vermelho.
+ */
 void green_led_on();
 
-extern bool green_led_is_on(); // Verifica se o LED verde está ligado
+/**
+ * Verifica se o LED verde está ligado.
+ *
+ * @return true se o LED verde estiver ligado, false caso contrário.
+ */
+extern bool green_led_is_on();
 
 #endif // LED_H

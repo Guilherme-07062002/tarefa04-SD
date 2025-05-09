@@ -6,14 +6,12 @@
 #include "matriz.h"
 
 void verifica_estado_catraca() {
-    // Verifica o estado de cada entrada e atualiza a variável catraca_aberta
     if (!PT || (DI && HO && GR)) {
-        catraca_aberta = true; // Catraca aberta
+        catraca_aberta = true;
     } else {
-        catraca_aberta = false; // Catraca fechada
+        catraca_aberta = false;
     }
 }
-
 
 void execute_logic_operation() {
     switch (opcao_atual) {

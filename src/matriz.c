@@ -7,7 +7,9 @@
  * - LED 3: HO (Horário Permitido)
  * - LED 2: DI (Dia Permitido)
  * - LED 1: PT (Portaria)
+ * ===========================================================
  */
+
 
 void set_GR(bool value){
     if (value) {

@@ -66,6 +66,10 @@ extern bool DI;
  */
 extern bool PT;
 
-extern bool joystick_button_was_pressed; // Variável para armazenar o estado do botão do joystick
+/**
+ * Variável para armazenar o estado do botão do joystick.
+ * Indica se o botão foi pressionado ou não.
+ */
+extern bool joystick_button_was_pressed;
 
 #endif // GLOBALS_H
