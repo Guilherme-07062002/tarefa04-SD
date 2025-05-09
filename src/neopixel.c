@@ -7,11 +7,7 @@ static uint led_count;
 static PIO np_pio;
 static uint np_sm;
 
-/**
- * Inicializa a máquina PIO para controle da matriz de LEDs.
- */
 void neopixel_init(uint pin, uint amount) {
-
   led_count = amount;
   leds = (npLED_t *)calloc(led_count, sizeof(npLED_t));
 
@@ -39,9 +35,6 @@ void neopixel_init(uint pin, uint amount) {
   set_initial_state(); // Inicializa o estado inicial da matriz de LEDs.
 }
 
-/**
- * Atribui uma cor RGB a um LED.
- */
 void neopixel_set_led(const uint index, const uint8_t r, const uint8_t g, const uint8_t b) {
   if (index < led_count) { // Verifica se o índice é válido
     leds[index].R = r;
@@ -50,17 +43,11 @@ void neopixel_set_led(const uint index, const uint8_t r, const uint8_t g, const 
   }
 }
 
-/**
- * Limpa o buffer de pixels.
- */
 void neopixel_clear() {
   for (uint i = 0; i < led_count; ++i)
     neopixel_set_led(i, 0, 0, 0);
 }
 
-/**
- * Escreve os dados do buffer nos LEDs.
- */
 void neopixel_write() {
   // Escreve cada dado de 8-bits dos pixels em sequência no buffer da máquina PIO.
   for (uint i = 0; i < led_count; ++i) {

@@ -41,14 +41,29 @@ void set_PT(bool value){
     }
 }
 
-/**
- * Inicializa com todos os LEDs respectivos a cada opção com a cor vermelha.
- */
 void set_initial_state(){
     neopixel_clear(); // Limpa o buffer de LEDs
     neopixel_set_led(4, 255, 0, 0); // GR (Giro Reconhecido) - Vermelho
     neopixel_set_led(3, 255, 0, 0); // HO (Horário Permitido) - Vermelho
     neopixel_set_led(2, 255, 0, 0); // DI (Dia Permitido) - Vermelho
     neopixel_set_led(1, 255, 0, 0); // PT (Portaria) - Vermelho
+    neopixel_write(); // Atualiza os LEDs com os dados do buffer
+}
+
+void update_leds() {
+    switch (opcao_atual) {
+        case 0: // GR
+            set_GR(GR);
+            break;
+        case 1: // HO
+            set_HO(HO);
+            break;
+        case 2: // DI
+            set_DI(DI);
+            break;
+        case 3: // PT
+            set_PT(PT);
+            break;
+    }
     neopixel_write(); // Atualiza os LEDs com os dados do buffer
 }

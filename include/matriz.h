@@ -40,4 +40,10 @@ void set_PT(bool value);
  */
 void set_initial_state();
 
+/**
+ * Atualiza o estado dos LEDs de acordo com a opção selecionada.
+ * Esta função é chamada para atualizar os LEDs com base na opção atual do menu.
+ */
+void update_leds();
+
 #endif // MATRIZ_H

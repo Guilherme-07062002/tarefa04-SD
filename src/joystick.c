@@ -52,6 +52,8 @@ bool joystick_read_axis(uint16_t *vry_value, uint *countup, uint *countdown, uin
 }
 
 void joystick_button_pressed() {
-    joystick_button_was_pressed = !gpio_get(SW); // Inverte o estado do botão
-    printf("Botão do joystick pressionado: %d\n", joystick_button_was_pressed); // Debug: imprime o estado do botão
+    if (gpio_get(SW) == 0) {
+        // Se o botão do joystick estiver pressionado, inverte o estado do botão
+        joystick_button_was_pressed = true;
+    }
 }

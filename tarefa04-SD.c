@@ -32,13 +32,15 @@ void comportamento_principal(uint *countup, uint *countdown, uint *histerese) {
     uint16_t vry_value;
     bool opcao_alterada = joystick_read_axis(&vry_value, countup, countdown, histerese);
 
+    joystick_button_pressed();
+
     // Exibe a opção atual no display apenas se ela foi alterada
     if (opcao_alterada) {
-        print_texto((char *)opcoes[opcao_atual], 18, 3); // Centralizado no display
-
-        // De acordo com a opção selecionada, realiza a ação correspondente
-        execute_logic_operation(); // Executa a operação lógica correspondente
+        print_texto((char *)opcoes[opcao_atual], 18, 3); // Centralizado no display        
     }
+    
+    // De acordo com a opção selecionada, realiza a ação correspondente
+    execute_logic_operation(); // Executa a operação lógica correspondente
 
     // Atualiza o estado dos LEDs com base na opção selecionada
     if (catraca_aberta) {
@@ -57,11 +59,6 @@ int main() {
     uint histerese = 5; // Controle de histerese para suavizar mudanças rápidas
 
     while (1) {
-        // Caso o botão do joystick tenha sido pressionado, altera o estado do botão
-        if(!joystick_button_was_pressed){
-            joystick_button_pressed();
-        }
-
         comportamento_principal(&countup, &countdown, &histerese);
         sleep_ms(100);
     }
