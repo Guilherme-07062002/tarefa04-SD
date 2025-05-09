@@ -52,8 +52,15 @@ bool joystick_read_axis(uint16_t *vry_value, uint *countup, uint *countdown, uin
 }
 
 void joystick_button_pressed() {
-    if (gpio_get(SW) == 0) {
-        // Se o botão do joystick estiver pressionado, inverte o estado do botão
-        joystick_button_was_pressed = true;
+    static bool button_was_down = false; // Variável estática para debounce
+
+    if (gpio_get(SW) == 0) { // Botão pressionado (nível baixo)
+        if (!button_was_down) {
+            joystick_button_was_pressed = true; // Só detecta na transição de solto para pressionado
+            button_was_down = true;
+        }
+        // Se já estava pressionado, não faz nada (evita múltiplos triggers)
+    } else {
+        button_was_down = false; // Botão foi solto, pronto para próxima detecção
     }
 }
