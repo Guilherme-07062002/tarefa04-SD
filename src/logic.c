@@ -5,6 +5,16 @@
 #include "led.h"
 #include "matriz.h"
 
+void verifica_estado_catraca() {
+    // Verifica o estado de cada entrada e atualiza a variável catraca_aberta
+    if (!PT || (DI && HO && GR)) {
+        catraca_aberta = true; // Catraca aberta
+    } else {
+        catraca_aberta = false; // Catraca fechada
+    }
+}
+
+
 void execute_logic_operation() {
     switch (opcao_atual) {
         case 0: // GR            
@@ -26,5 +36,6 @@ void execute_logic_operation() {
     }
 
     update_leds(); // Atualiza os LEDs de acordo com a opção selecionada
+    verifica_estado_catraca(); // Verifica o estado da catraca
     joystick_button_was_pressed = false; // Sempre reseta o estado após a leitura
 }
